@@ -23,11 +23,12 @@ const Select = styled.select`
   margin-top: 5px;
 `;
 
-const useMoneda = (label, stateInicial, opciones) => {
+const useCriptomoneda = (label, stateInicial, opciones) => {
+  //   console.log(opciones);
   //State de nuestro custom hooks
   const [state, actualizarState] = useState(stateInicial);
 
-  const SelectMoneda = ({ error }) => (
+  const SelectCripto = () => (
     <>
       <Label>{label}</Label>
       <Select onChange={(e) => actualizarState(e.target.value)} value={state}>
@@ -35,8 +36,8 @@ const useMoneda = (label, stateInicial, opciones) => {
           $$$
         </option>
         {opciones.map((opcion) => (
-          <option key={opcion.codigo} value={opcion.codigo}>
-            {opcion.nombre}
+          <option key={opcion.CoinInfo.Id} value={opcion.CoinInfo.name}>
+            {opcion.CoinInfo.FullName}
           </option>
         ))}
       </Select>
@@ -44,7 +45,7 @@ const useMoneda = (label, stateInicial, opciones) => {
   );
 
   //Retornar state, inteerfaz y fn que modifica el state
-  return [state, SelectMoneda, actualizarState];
+  return [state, SelectCripto, actualizarState];
 };
 
-export default useMoneda;
+export default useCriptomoneda;
