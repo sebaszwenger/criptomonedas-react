@@ -16,7 +16,7 @@ const Error = ({ mensaje }) => {
   return <MensajeError>{mensaje}</MensajeError>;
 };
 
-MensajeError.propTypes = {
-  resultado: PropTypes.string,
+Error.propTypes = {
+  resultado: PropTypes.string.isRequired,
 };
 export default Error;

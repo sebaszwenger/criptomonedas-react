@@ -6,12 +6,14 @@ const ResultadoDiv = styled.div`
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 `;
+
 const Info = styled.p`
   font-size: 18px;
   span {
     font-weight: bold;
   }
 `;
+
 const Precio = styled.p`
   font-size: 28px;
   span {
@@ -21,7 +23,7 @@ const Precio = styled.p`
 
 const Cotizacion = ({ resultado }) => {
   if (Object.keys(resultado).length === 0) return null;
-  console.log(resultado);
+
   return (
     <ResultadoDiv>
       <Precio>

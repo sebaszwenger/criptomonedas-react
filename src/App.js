@@ -48,10 +48,10 @@ function App() {
   const [cargando, setCargando] = useState(false);
 
   useEffect(() => {
-    const cotizarCriptomoneda = async () => {
-      //Evitamos la primera ejecucion
-      if (moneda === "") return;
+    //Evitamos la primera ejecucion
+    if (moneda === "") return;
 
+    const cotizarCriptomoneda = async () => {
       //Consultamos la API para obtener cotizacion
       const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
@@ -73,6 +73,7 @@ function App() {
     cotizarCriptomoneda();
   }, [moneda, criptomoneda]);
 
+  //Carga condicional Spinner o Cotizacion
   const componente = cargando ? (
     <Spinner />
   ) : (

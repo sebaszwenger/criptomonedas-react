@@ -4,7 +4,6 @@ import Error from "./Error";
 import useMoneda from "../hooks/useMoneda";
 import useCriptomoneda from "../hooks/useCriptomoneda";
 import PropTypes from "prop-types";
-
 import axios from "axios";
 
 const Boton = styled.button`
@@ -30,6 +29,7 @@ const Formulario = ({ setMoneda, setCriptomoneda }) => {
   const [listacripto, setlistacripto] = useState([]);
   const [error, setError] = useState(false);
 
+  //Tipos de monedas a cotizar
   const MONEDAS = [
     { codigo: "USD", nombre: "Dolar Estados Unidos" },
     { codigo: "MXN", nombre: "Peso Mexicanos" },
@@ -37,21 +37,21 @@ const Formulario = ({ setMoneda, setCriptomoneda }) => {
     { codigo: "GBP", nombre: "Libra Esterlina" },
   ];
 
-  //Utilizar useMoneda
+  //Utilizamos nuestro custom hook useMoneda
   const [moneda, SelectMonedas] = useMoneda(
     "Selecciona una Moneda",
     "",
     MONEDAS
   );
 
-  //Utilizar useCriptomoneda
+  //Utilizamos nuestro custom hook useCriptomoneda
   const [criptomoneda, SelectCripto] = useCriptomoneda(
     "Selecciona una Criptomeneda",
     "",
     listacripto
   );
 
-  //Ejecutar llamado a la API criptocompare
+  //Llamado API criptocompare
   useEffect(() => {
     const consultarAPI = async () => {
       const url =
@@ -67,7 +67,6 @@ const Formulario = ({ setMoneda, setCriptomoneda }) => {
   //Cuando el usuario hace submit
   const cotizarMoneda = (e) => {
     e.preventDefault();
-    console.log("hola");
 
     //Valida si ambos campos estan llenos
     if (moneda === "" || criptomoneda === "") {
