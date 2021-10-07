@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Error from "./Error";
 import useMoneda from "../hooks/useMoneda";
 import useCriptomoneda from "../hooks/useCriptomoneda";
+import PropTypes from "prop-types";
 
 import axios from "axios";
 
@@ -31,7 +32,6 @@ const Formulario = ({ setMoneda, setCriptomoneda }) => {
 
   const MONEDAS = [
     { codigo: "USD", nombre: "Dolar Estados Unidos" },
-    { codigo: "ARG", nombre: "Peso Argentino" },
     { codigo: "MXN", nombre: "Peso Mexicanos" },
     { codigo: "EUR", nombre: "Euro" },
     { codigo: "GBP", nombre: "Libra Esterlina" },
@@ -67,6 +67,7 @@ const Formulario = ({ setMoneda, setCriptomoneda }) => {
   //Cuando el usuario hace submit
   const cotizarMoneda = (e) => {
     e.preventDefault();
+    console.log("hola");
 
     //Valida si ambos campos estan llenos
     if (moneda === "" || criptomoneda === "") {
@@ -93,6 +94,11 @@ const Formulario = ({ setMoneda, setCriptomoneda }) => {
       </Boton>
     </form>
   );
+};
+
+Formulario.propTypes = {
+  setMoneda: PropTypes.func.isRequired,
+  setCriptomoneda: PropTypes.func.isRequired,
 };
 
 export default Formulario;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const MensajeError = styled.p`
   background-color: #b7322c;
@@ -7,7 +8,6 @@ const MensajeError = styled.p`
   color: #fff;
   font-size: 20px;
   text-transform: uppercase;
-  /* font-weight: bold; */
   text-align: center;
   font-family: "Bebas Neue", cursive;
 `;
@@ -16,4 +16,7 @@ const Error = ({ mensaje }) => {
   return <MensajeError>{mensaje}</MensajeError>;
 };
 
+MensajeError.propTypes = {
+  resultado: PropTypes.string,
+};
 export default Error;
